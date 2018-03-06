@@ -84,7 +84,7 @@ class SocialShareNetwork extends DataObject
     {
         parent::requireDefaultRecords();
 
-        if(SocialShareNetwork::get()->Count() == 0) {
+      if(SocialShareNetwork::get()->Count() == 0) {
             $object = new SocialShareNetwork();
             $object->Network = 'Facebook';
             $object->NetworkUrl = 'http://www.facebook.com/sharer.php?u={$AbsoluteLink}';
@@ -98,20 +98,14 @@ class SocialShareNetwork extends DataObject
             $object->write();
 
             $object = new SocialShareNetwork();
-            $object->Network = 'Google+';
-            $object->NetworkUrl = 'https://plus.google.com/share?url={$AbsoluteLink}';
-            $object->Active = 1;
-            $object->write();
-
-            $object = new SocialShareNetwork();
             $object->Network = 'Linkedin';
             $object->NetworkUrl = 'http://www.linkedin.com/shareArticle?url={$AbsoluteLink}&title={$Title}';
             $object->Active = 1;
             $object->write();
 
             $object = new SocialShareNetwork();
-            $object->Network = 'Reddit';
-            $object->NetworkUrl = 'http://www.reddit.com/submit?url={$AbsoluteLink}&title={$Title}';
+            $object->Network = 'Mail';
+            $object->NetworkUrl = 'mailto:?subject={$Title}&body=I thought you might find {$AbsoluteLink} Interesting';
             $object->Active = 1;
             $object->write();
         }
